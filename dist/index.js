@@ -47,31 +47,31 @@ const client = new client_1.PrismaClient();
 // }
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        // const createUser = await client.user.create({
-        //     data : {
-        //         username : "aditya",
-        //         password : "erode",
-        //         City : "Erode"
-        //     }
-        // })
-        // console.log(createUser);
-        // const addTodo = await client.todo.create({
-        //     data : {
-        //         title : "shot",
-        //         done : true,
-        //         userId : createUser.id
-        //     }
-        // })
+        const createUser = yield client.user.create({
+            data: {
+                username: "aditya",
+                password: "erode",
+                City: "Erode"
+            }
+        });
+        console.log(createUser);
+        const addTodo = yield client.todo.create({
+            data: {
+                title: "shot",
+                done: true,
+                userId: createUser.id
+            }
+        });
         const id1 = yield client.user.findFirst({
             where: {
-                id: 6
+                id: 1
             },
             include: {
                 todos: true
             }
         });
         console.log(id1);
-        // console.log(addTodo);
+        console.log(addTodo);
     });
 }
 main();
