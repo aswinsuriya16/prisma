@@ -18,6 +18,7 @@ model User {
   username String @unique
   password String
   City String
+  todos Todo[]
 }
 
 model Todo {
@@ -25,4 +26,5 @@ model Todo {
   title String
   done Boolean
   userId Int 
+  user User @relation(fields: [userId] , references: [id])
 }
